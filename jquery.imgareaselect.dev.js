@@ -16,7 +16,7 @@
 /*
  * Math functions will be used extensively, so it's convenient to make a few
  * shortcuts
- */    
+ */
 var abs = Math.abs,
     max = Math.max,
     min = Math.min,
@@ -24,7 +24,7 @@ var abs = Math.abs,
 
 /**
  * Create a new HTML div element
- * 
+ *
  * @return A jQuery object representing the new element
  */
 function div() {
@@ -33,15 +33,15 @@ function div() {
 
 /**
  * imgAreaSelect initialization
- * 
+ *
  * @param img
  *            A HTML image element to attach the plugin to
  * @param options
  *            An options object
  */
 $.imgAreaSelect = function (img, options) {
-    var 
-        /* jQuery object representing the image */ 
+    var
+        /* jQuery object representing the image */
         $img = $(img),
         
         /* Has the image finished loading? */
@@ -90,7 +90,7 @@ $.imgAreaSelect = function (img, options) {
         /* Plugin elements position */
         position = 'absolute',
         
-        /* X/Y coordinates of the starting point for move/resize operations */ 
+        /* X/Y coordinates of the starting point for move/resize operations */
         startX, startY,
         
         /* Horizontal and vertical scaling factors */
@@ -120,7 +120,7 @@ $.imgAreaSelect = function (img, options) {
         /* User agent */
         ua = navigator.userAgent,
         
-        /* Various helper variables used throughout the code */ 
+        /* Various helper variables used throughout the code */
         $p, d, i, o, w, h, adjusted;
 
     /*
@@ -130,7 +130,7 @@ $.imgAreaSelect = function (img, options) {
     
     /**
      * Translate selection X to viewport X
-     * 
+     *
      * @param x
      *            Selection X
      * @return Viewport X
@@ -141,7 +141,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Translate selection Y to viewport Y
-     * 
+     *
      * @param y
      *            Selection Y
      * @return Viewport Y
@@ -156,7 +156,7 @@ $.imgAreaSelect = function (img, options) {
     
     /**
      * Translate viewport X to selection X
-     * 
+     *
      * @param x
      *            Viewport X
      * @return Selection X
@@ -167,7 +167,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Translate viewport Y to selection Y
-     * 
+     *
      * @param y
      *            Viewport Y
      * @return Selection Y
@@ -183,7 +183,7 @@ $.imgAreaSelect = function (img, options) {
     
     /**
      * Get event X and translate it to viewport X
-     * 
+     *
      * @param event
      *            The event object
      * @return Viewport X
@@ -194,7 +194,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Get event Y and translate it to viewport Y
-     * 
+     *
      * @param event
      *            The event object
      * @return Viewport Y
@@ -205,7 +205,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Get the current selection
-     * 
+     *
      * @param noScale
      *            If set to <code>true</code>, scaling is not applied to the
      *            returned selection
@@ -224,7 +224,7 @@ $.imgAreaSelect = function (img, options) {
     
     /**
      * Set the current selection
-     * 
+     *
      * @param x1
      *            X coordinate of the upper left corner of the selection area
      * @param y1
@@ -293,7 +293,7 @@ $.imgAreaSelect = function (img, options) {
             imgOfs.left += max(document.body.scrollLeft, docElem.scrollLeft);
         }
 
-        /* Determine parent element offset */ 
+        /* Determine parent element offset */
         parOfs = /absolute|relative/.test($parent.css('position')) ?
             { left: round($parent.offset().left) - $parent.scrollLeft(),
                 top: round($parent.offset().top) - $parent.scrollTop() } :
@@ -314,7 +314,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Update plugin elements
-     * 
+     *
      * @param resetKeyPress
      *            If set to <code>false</code>, this instance's keypress
      *            event handler is not activated
@@ -333,7 +333,7 @@ $.imgAreaSelect = function (img, options) {
         /*
          * Reset the position of selection area, borders, and handles (IE6/IE7
          * position them incorrectly if we don't do this)
-         */ 
+         */
         $area.add($border).add($handles).css({ left: 0, top: 0 });
 
         /* Set border dimensions */
@@ -391,11 +391,11 @@ $.imgAreaSelect = function (img, options) {
          * broken). This workaround is not perfect, as it requires setTimeout()
          * and thus causes the border to flicker a bit, but I haven't found a
          * better solution.
-         * 
+         *
          * Note: This only happens with CSS borders, set with the borderWidth,
          * borderOpacity, borderColor1, and borderColor2 options (which are now
          * deprecated). Borders created with GIF background images are fine.
-         */ 
+         */
         if (msie && $border.outerWidth() - $border.innerWidth() == 2) {
             $border.css('margin', 0);
             setTimeout(function () { $border.css('margin', 'auto'); }, 0);
@@ -405,7 +405,7 @@ $.imgAreaSelect = function (img, options) {
     /**
      * Do the complete update sequence: recalculate offsets, update the
      * elements, and set the correct values of x1, y1, x2, and y2.
-     * 
+     *
      * @param resetKeyPress
      *            If set to <code>false</code>, this instance's keypress
      *            event handler is not activated
@@ -419,19 +419,19 @@ $.imgAreaSelect = function (img, options) {
     
     /**
      * Hide or fade out an element (or multiple elements)
-     * 
+     *
      * @param $elem
      *            A jQuery object containing the element(s) to hide/fade out
      * @param fn
      *            Callback function to be called when fadeOut() completes
      */
     function hide($elem, fn) {
-        options.fadeSpeed ? $elem.fadeOut(options.fadeSpeed, fn) : $elem.hide(); 
+        options.fadeSpeed ? $elem.fadeOut(options.fadeSpeed, fn) : $elem.hide();
     }
 
     /**
      * Selection area mousemove event handler
-     * 
+     *
      * @param event
      *            The event object
      */
@@ -472,7 +472,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Document mouseup event handler
-     * 
+     *
      * @param event
      *            The event object
      */
@@ -494,7 +494,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Selection area mousedown event handler
-     * 
+     *
      * @param event
      *            The event object
      * @return false
@@ -537,7 +537,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Adjust the x2/y2 coordinates to maintain aspect ratio (if defined)
-     * 
+     *
      * @param xFirst
      *            If set to <code>true</code>, calculate x2 first. Otherwise,
      *            calculate y2 first.
@@ -546,7 +546,7 @@ $.imgAreaSelect = function (img, options) {
         if (aspectRatio)
             if (xFirst) {
                 x2 = max(left, min(left + imgWidth,
-                    x1 + abs(y2 - y1) * aspectRatio * (x2 > x1 || -1)));    
+                    x1 + abs(y2 - y1) * aspectRatio * (x2 > x1 || -1)));
                 y2 = round(max(top, min(top + imgHeight,
                     y1 + abs(x2 - x1) / aspectRatio * (y2 > y1 || -1))));
                 x2 = round(x2);
@@ -621,7 +621,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Mousemove event handler triggered when the user is selecting an area
-     * 
+     *
      * @param event
      *            The event object
      * @return false
@@ -632,12 +632,12 @@ $.imgAreaSelect = function (img, options) {
 
         doResize();
 
-        return false;        
+        return false;
     }
 
     /**
      * Move the selection area
-     * 
+     *
      * @param newX1
      *            New viewport X1
      * @param newY1
@@ -657,7 +657,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Mousemove event handler triggered when the selection area is being moved
-     * 
+     *
      * @param event
      *            The event object
      * @return false
@@ -668,7 +668,7 @@ $.imgAreaSelect = function (img, options) {
 
         doMove(x1, y1);
 
-        event.preventDefault();     
+        event.preventDefault();
         return false;
     }
 
@@ -680,7 +680,7 @@ $.imgAreaSelect = function (img, options) {
         adjust();
 
         x2 = x1;
-        y2 = y1;       
+        y2 = y1;
         doResize();
 
         resize = '';
@@ -717,7 +717,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Image mousedown event handler
-     * 
+     *
      * @param event
      *            The event object
      * @return false
@@ -782,7 +782,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Document keypress event handler
-     * 
+     *
      * @param event
      *            The event object
      * @return false
@@ -861,7 +861,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Apply style options to plugin element (or multiple elements)
-     * 
+     *
      * @param $elem
      *            A jQuery object representing the element(s) to style
      * @param props
@@ -876,7 +876,7 @@ $.imgAreaSelect = function (img, options) {
 
     /**
      * Set plugin options
-     * 
+     *
      * @param newOptions
      *            The new options object
      */
@@ -1025,14 +1025,14 @@ $.imgAreaSelect = function (img, options) {
     
     /**
      * Get current options
-     * 
+     *
      * @return An object containing the set of options currently in use
      */
     this.getOptions = function () { return options; };
     
     /**
      * Set plugin options
-     * 
+     *
      * @param newOptions
      *            The new options object
      */
@@ -1040,7 +1040,7 @@ $.imgAreaSelect = function (img, options) {
     
     /**
      * Get the current selection
-     * 
+     *
      * @param noScale
      *            If set to <code>true</code>, scaling is not applied to the
      *            returned selection
@@ -1050,7 +1050,7 @@ $.imgAreaSelect = function (img, options) {
     
     /**
      * Set the current selection
-     * 
+     *
      * @param x1
      *            X coordinate of the upper left corner of the selection area
      * @param y1
@@ -1072,7 +1072,7 @@ $.imgAreaSelect = function (img, options) {
     
     /**
      * Update plugin elements
-     * 
+     *
      * @param resetKeyPress
      *            If set to <code>false</code>, this instance's keypress
      *            event handler is not activated
@@ -1084,7 +1084,7 @@ $.imgAreaSelect = function (img, options) {
         opera = /opera/i.test(ua),
         safari = /webkit/i.test(ua) && !/chrome/i.test(ua);
 
-    /* 
+    /*
      * Traverse the image's parent elements (up to <body>) and find the
      * highest z-index
      */
@@ -1093,9 +1093,6 @@ $.imgAreaSelect = function (img, options) {
     while ($p.length) {
         zIndex = max(zIndex,
             !isNaN($p.css('z-index')) ? $p.css('z-index') : zIndex);
-        /* Also check if any of the ancestor elements has fixed position */ 
-        if ($p.css('position') == 'fixed')
-            position = 'fixed';
 
         $p = $p.parent(':not(body)');
     }
@@ -1121,7 +1118,7 @@ $.imgAreaSelect = function (img, options) {
      * event, we're adding an additional div to $box and we're going to toggle
      * it when mouse moves inside the selection area.
      */
-    if (opera)    
+    if (opera)
         $areaOpera = div().css({ width: '100%', height: '100%',
             position: 'absolute', zIndex: zIndex + 2 || 2 });
 
@@ -1145,7 +1142,7 @@ $.imgAreaSelect = function (img, options) {
     img.complete || img.readyState == 'complete' || !$img.is('img') ?
         imgLoad() : $img.one('load', imgLoad);
 
-    /* 
+    /*
      * MSIE 9.0 doesn't always fire the image load event -- resetting the src
      * attribute seems to trigger it. The check is for version 7 and above to
      * accommodate for MSIE 9 running in compatibility mode.
@@ -1156,7 +1153,7 @@ $.imgAreaSelect = function (img, options) {
 
 /**
  * Invoke imgAreaSelect on a jQuery object containing the image(s)
- * 
+ *
  * @param options
  *            Options object
  * @return The jQuery object or a reference to imgAreaSelect instance (if the
@@ -1184,7 +1181,7 @@ $.fn.imgAreaSelect = function (options) {
             /*
              * If neither the "enable" nor the "disable" option is present, add
              * "enable" as the default
-             */ 
+             */
             if (options.enable === undefined && options.disable === undefined)
                 options.enable = true;
 
